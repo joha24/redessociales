@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - Redes Sociales</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER CON LOGO -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🌐</div>
+            <h1>Social<span>Verse</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#info">Información</a></li>
+                <li><a href="#redes">Redes Populares</a></li>
+                <li><a href="#juego">Juego</a></li>
+                <li><a href="#consejos">Consejos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO / INICIO -->
+    <section id="inicio" class="hero">
+        <h2>¡Bienvenido al Mundo de las <span>Redes Sociales</span>!</h2>
+        <p>Descubrí cómo conectarte, compartir y divertirte de forma segura.</p>
+        <a href="#juego" class="btn">🎮 ¡Jugá Ahora!</a>
+    </section>
+
+    <!-- INFORMACIÓN -->
+    <section id="info" class="info">
+        <h2>¿Qué son las Redes Sociales?</h2>
+        <p>Las redes sociales son plataformas digitales que permiten a las personas conectarse, compartir contenido, comunicarse y construir comunidades en línea. Son espacios donde podés:</p>
+        <div class="cards">
+            <div class="card rosa">
+                <h3>💬 Comunicarte</h3>
+                <p>Charlar con amigos y familiares en cualquier momento del día.</p>
+            </div>
+            <div class="card verde">
+                <h3>📸 Compartir</h3>
+                <p>Subir fotos, videos y momentos especiales de tu vida.</p>
+            </div>
+            <div class="card amarillo">
+                <h3>🌍 Conectar</h3>
+                <p>Hacer amigos de todo el mundo y conocer nuevas culturas.</p>
+            </div>
+            <div class="card violeta">
+                <h3>🎨 Crear</h3>
+                <p>Expresar tu creatividad con contenido original.</p>
+            </div>
+            <div class="card celeste">
+                <h3>📚 Aprender</h3>
+                <p>Descubrir cosas nuevas, tutoriales y contenido educativo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REDES POPULARES -->
+    <section id="redes" class="redes">
+        <h2>Las Redes Más Populares</h2>
+        <div class="redes-grid">
+            <div class="red-item" style="--color: #E1306C;">
+                <div class="red-icon">📷</div>
+                <h3>Instagram</h3>
+                <p>Fotos y videos cortos.</p>
+            </div>
+            <div class="red-item" style="--color: #1877F2;">
+                <div class="red-icon">👥</div>
+                <h3>Facebook</h3>
+                <p>Conectate con amigos.</p>
+            </div>
+            <div class="red-item" style="--color: #1DA1F2;">
+                <div class="red-icon">🐦</div>
+                <h3>Twitter / X</h3>
+                <p>Noticias y opiniones en tiempo real.</p>
+            </div>
+            <div class="red-item" style="--color: #25D366;">
+                <div class="red-icon">💬</div>
+                <h3>WhatsApp</h3>
+                <p>Mensajes instantáneos.</p>
+            </div>
+            <div class="red-item" style="--color: #FF0000;">
+                <div class="red-icon">▶️</div>
+                <h3>YouTube</h3>
+                <p>Videos de todo tipo.</p>
+            </div>
+            <div class="red-item" style="--color: #FF0050;">
+                <div class="red-icon">🎵</div>
+                <h3>TikTok</h3>
+                <p>Videos cortos y divertidos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JUEGO ESTILO DINO -->
+    <section id="juego" class="juego-correr">
+        <h2>🏃‍♂️ ¡El Corredor de Redes Sociales!</h2>
+        <p>Controlá el logo de Instagram y esquivá los logos de las otras redes. ¡A ver cuánto aguantás!</p>
+        <div class="game-container">
+            <canvas id="gameCanvas" width="800" height="300"></canvas>
+            <div id="game-over" class="game-over">
+                <h3>💥 ¡Perdiste!</h3>
+                <p>Puntaje: <span id="puntaje-final">0</span></p>
+                <button class="btn" onclick="reiniciarJuego()">🔄 Jugar de nuevo</button>
+            </div>
+            <div id="game-start" class="game-start">
+                <p>Presioná <strong>ESPACIO</strong> o <strong>CLIC</strong> para saltar</p>
+                <button class="btn" onclick="iniciarJuego()">🎮 ¡Comenzar!</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSEJOS DE SEGURIDAD -->
+    <section id="consejos" class="consejos">
+        <h2>🛡️ Consejos de Seguridad</h2>
+        <ul>
+            <li>🔒 Usá contraseñas fuertes y diferentes para cada red</li>
+            <li>🙅 No compartas información personal con desconocidos</li>
+            <li>⏰ Limitá el tiempo que pasás en las redes</li>
+            <li>🚫 Bloqueá y reportá contenido o personas inapropiadas</li>
+            <li>🤝 Aceptá solicitudes solo de personas que conocés</li>
+        </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🌐 SocialVerse - Hecho con 💜 para aprender sobre redes sociales</p>
+    </footer>
+
+    <script>
+        // ===== JUEGO ESTILO DINO CON LOGOS DE REDES =====
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const gameOverDiv = document.getElementById("game-over");
+        const gameStartDiv = document.getElementById("game-start");
+
+        let jugando = false;
+        let puntajeJuego = 0;
+        let velocidadJuego = 5;
+        let frameCount = 0;
+        let gameOver = false;
+
+        // Jugador: logo de Instagram
+        const jugador = {
+            x: 80,
+            y: 200,
+            width: 40,
+            height: 40,
+            vy: 0,
+            gravedad: 0.8,
+            fuerzaSalto: -14,
+            enSuelo: true
+        };
+
+        let obstaculos = [];
+
+        // Dibujar logo de Instagram
+        function dibujarInstagram(x, y, size) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(x + size/2, y + size/2, size/2 * 0.8, 0, Math.PI * 2);
+            ctx.strokeStyle = "#E1306C";
+            ctx.lineWidth = 4;
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(x + size/2, y + size/2, size/2 * 0.3, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(x + size/2, y + size/2, size/2 * 0.1, 0, Math.PI * 2);
+            ctx.fillStyle = "#E1306C";
+            ctx.fill();
+            ctx.restore();
+        }
+
+        // Dibujar obstáculo (logo de otra red)
+        function dibujarObstaculo(obs) {
+            ctx.save();
+            ctx.font = obs.size + "px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(obs.icono, obs.x + obs.size/2, obs.y + obs.size);
+            ctx.restore();
+        }
+
+        // Dibujar suelo
+        function dibujarSuelo() {
+            ctx.fillStyle = "#ddd";
+            ctx.fillRect(0, 250, canvas.width, 2);
+            ctx.strokeStyle = "#ccc";
+            ctx.lineWidth = 1;
+            for (let i = (frameCount * 2) % 30; i < canvas.width; i += 30) {
+                ctx.beginPath();
+                ctx.moveTo(i, 250);
+                ctx.lineTo(i + 15, 250);
+                ctx.stroke();
+            }
+        }
+
+        // Dibujar todo
+        function dibujar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            dibujarSuelo();
+            dibujarInstagram(jugador.x, jugador.y, jugador.width);
+            obstaculos.forEach(obs => dibujarObstaculo(obs));
+            ctx.font = "bold 20px Arial";
+            ctx.fillStyle = "#9b59ff";
+            ctx.textAlign = "right";
+            ctx.fillText("🏆 " + puntajeJuego, canvas.width - 15, 30);
+        }
+
+        // Actualizar el juego
+        function actualizar() {
+            if (!jugando || gameOver) return;
+
+            // Gravedad
+            jugador.vy += jugador.gravedad;
+            jugador.y += jugador.vy;
+
+            // Límite del suelo
+            if (jugador.y >= 200) {
+                jugador.y = 200;
+                jugador.vy = 0;
+                jugador.enSuelo = true;
+            }
+
+            // Generar obstáculos
+            if (frameCount % 90 === 0) {
+                const iconos = ["🐦", "▶️", "🎵", "👥", "💬"];
+                const indice = Math.floor(Math.random() * iconos.length);
+                obstaculos.push({
+                    x: canvas.width,
+                    y: 210,
+                    size: 30,
+                    icono: iconos[indice],
+                    velocidad: velocidadJuego
+                });
+            }
+
+            // Mover obstáculos
+            obstaculos.forEach(obs => {
+                obs.x -= obs.velocidad;
+            });
+
+            // Eliminar los que salen de pantalla
+            obstaculos = obstaculos.filter(obs => obs.x + obs.size > 0);
+
+            // Puntaje y velocidad
+            puntajeJuego++;
+            velocidadJuego = 5 + Math.floor(puntajeJuego / 500);
+
+            // Detectar colisiones
+            obstaculos.forEach(obs => {
+                if (
+                    jugador.x < obs.x + obs.size &&
+                    jugador.x + jugador.width > obs.x &&
+                    jugador.y < obs.y + obs.size &&
+                    jugador.y + jugador.height > obs.y
+                ) {
+                    terminarJuego();
+                }
+            });
+
+            frameCount++;
+            dibujar();
+            requestAnimationFrame(actualizar);
+        }
+
+        // Saltar
+        function saltar() {
+            if (jugador.enSuelo && jugando && !gameOver) {
+                jugador.vy = jugador.fuerzaSalto;
+                jugador.enSuelo = false;
+            }
+        }
+
+        // Iniciar juego
+        function iniciarJuego() {
+            jugando = true;
+            gameOver = false;
+            puntajeJuego = 0;
+            velocidadJuego = 5;
+            frameCount = 0;
+            obstaculos = [];
+            jugador.y = 200;
+            jugador.vy = 0;
+            jugador.enSuelo = true;
+            gameStartDiv.style.display = "none";
+            gameOverDiv.style.display = "none";
+            requestAnimationFrame(actualizar);
+        }
+
+        // Terminar juego
+        function terminarJuego() {
+            gameOver = true;
+            jugando = false;
+            document.getElementById("puntaje-final").textContent = puntajeJuego;
+            gameOverDiv.style.display = "block";
+        }
+
+        // Reiniciar
+        function reiniciarJuego() {
+            gameOverDiv.style.display = "none";
+            iniciarJuego();
+        }
+
+        // Controles: tecla espacio
+        document.addEventListener("keydown", function(e) {
+            if (e.code === "Space") {
+                e.preventDefault();
+                if (gameStartDiv.style.display !== "none") {
+                    iniciarJuego();
+                } else {
+                    saltar();
+                }
+            }
+        });
+
+        // Controles: clic en el canvas
+        canvas.addEventListener("click", function() {
+            if (gameStartDiv.style.display !== "none") {
+                iniciarJuego();
+            } else {
+                saltar();
+            }
+        });
+    </script>
+
+</body>
+</html>
